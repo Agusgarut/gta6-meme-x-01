@@ -99,14 +99,14 @@ def field(x, y, label, value, value_size=31):
 
 field(LX, FY, "NAME OF CHILD", "GRAND THEFT AUTO VI")
 field(RX, FY, "DATE OF BIRTH", "19 NOVEMBER 2026")
-field(LX, FY + 80, "PLACE OF BIRTH", "VICE CITY, LEONIDA")
-field(RX, FY + 80, "WEIGHT AT BIRTH", "214 GB")
-field(LX, FY + 160, "MOTHER", "ROCKSTAR GAMES")
-field(RX, FY + 160, "FATHER", "THE PLAYER")
-field(LX, FY + 240, "FATHER IN WAITING ROOM SINCE", "17 SEP 2013", value_size=28)
-field(RX, FY + 240, "FIRST WITNESSES", "JASON & LUCIA")
+field(LX, FY + 78, "PLACE OF BIRTH", "VICE CITY, LEONIDA")
+field(RX, FY + 78, "WEIGHT AT BIRTH", "214 GB")
+field(LX, FY + 156, "MOTHER", "ROCKSTAR GAMES")
+field(RX, FY + 156, "FATHER", "THE PLAYER")
+field(LX, FY + 234, "FATHER IN WAITING ROOM SINCE", "17 SEP 2013", value_size=28)
+field(RX, FY + 234, "FIRST WITNESSES", "JASON & LUCIA")
 
-LY = FY + 320
+LY = FY + 312
 d.text((LX, LY), "LABOUR", font=F(SANS_B, 19), fill=GREY)
 d.text((LX, LY + 26),
        "13 YEARS — INDUCED TWICE (FALL 2025 · MAY 2026), SENT HOME BOTH TIMES",
@@ -114,7 +114,7 @@ d.text((LX, LY + 26),
 d.line([(LX, LY + 64), (W - 110, LY + 64)], fill=(178, 174, 186), width=1)
 
 # ---------------------------------------------------------------- the bill
-BY = LY + 88
+BY = LY + 84
 rule(BY, x0=110, x1=W - 110, width=2)
 text_c(W / 2, BY + 10, "ITEMISED HOSPITAL ACCOUNT · ACCOUNT NO. 2013–2026",
        F(SANS_B, 22), NAVY, tracking=3)
@@ -143,7 +143,7 @@ for label, price in BILL:
     while x < W - 126 - pw:
         d.ellipse([x, ry + 21, x + 3, ry + 24], fill=(170, 166, 178))
         x += 11
-    ry += 34
+    ry += 32
 
 rule(ry + 2, x0=110, x1=W - 110, width=1)
 rule(ry + 7, x0=110, x1=W - 110, width=3)
@@ -154,19 +154,19 @@ d.text((W - 110 - d.textlength(tp, font=F(MONO_B, 32)), ry + 14), tp,
 TOTAL_Y = ry + 14
 
 # ---------------------------------------------------------------- stamp
-stamp = Image.new("RGBA", (520, 160), (0, 0, 0, 0))
+stamp = Image.new("RGBA", (480, 148), (0, 0, 0, 0))
 sd = ImageDraw.Draw(stamp)
-sd.rounded_rectangle([6, 6, 514, 154], radius=14, outline=STAMP_RED + (235,), width=7)
-sd.rounded_rectangle([20, 20, 500, 140], radius=9, outline=STAMP_RED + (200,), width=2)
-sf = F(SANS_BLACK, 78)
+sd.rounded_rectangle([6, 6, 474, 142], radius=13, outline=STAMP_RED + (235,), width=7)
+sd.rounded_rectangle([19, 19, 461, 129], radius=8, outline=STAMP_RED + (200,), width=2)
+sf = F(SANS_BLACK, 72)
 sw = sd.textlength("DELIVERED", font=sf)
-sd.text(((520 - sw) / 2, 36), "DELIVERED", font=sf, fill=STAMP_RED + (225,))
+sd.text(((480 - sw) / 2, 33), "DELIVERED", font=sf, fill=STAMP_RED + (225,))
 stamp = stamp.rotate(13, expand=True, resample=Image.BICUBIC)
-img.paste(stamp, (648, BY + 54), stamp)
+img.paste(stamp, (736, BY + 14), stamp)
 d = ImageDraw.Draw(img, "RGBA")
 
 # ---------------------------------------------------------------- punchline
-text_c(W / 2, TOTAL_Y + 62,
+text_c(W / 2, TOTAL_Y + 56,
        "Thirteen years in labour. The father never left the waiting room.",
        F(SERIF_I, 34), NAVY)
 
